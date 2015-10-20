@@ -28,6 +28,7 @@ namespace twozerofoureight
         public void Notify(Model m)
         {
             UpdateBoard(((TwoZeroFourEightModel) m).GetBoard());
+            UpdateScore(((TwoZeroFourEightModel) m).GetBoard());
         }
 
         private void UpdateTile(Label l, int i)
@@ -52,7 +53,24 @@ namespace twozerofoureight
                 case 8:
                     l.BackColor = Color.Red;
                     break;
-                default:
+                case 16:
+                    l.BackColor = Color.Aqua;
+                    break;
+                case 32:
+                    l.BackColor = Color.BlueViolet;
+                    break;
+                case 64:
+                    l.BackColor = Color.DeepPink;
+                    break;
+                case 128:
+                    l.BackColor = Color.Gold;
+                    break;
+                case 256:
+                    l.BackColor = Color.DarkCyan;
+                    break;
+                case 512:
+                    l.BackColor = Color.DarkSalmon;
+                    break;
                     l.BackColor = Color.Green;
                     break;
             }
@@ -76,6 +94,18 @@ namespace twozerofoureight
             UpdateTile(lbl32,board[3, 2]);
             UpdateTile(lbl33,board[3, 3]);
         }
+        private void UpdateScore(int[,] board)
+        {
+            int bScore = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    bScore += board[i, j];
+                }
+            }
+            lblScore.Text = Convert.ToString(bScore);
+        }
 
         private void btnLeft_Click(object sender, EventArgs e)
         {
@@ -95,6 +125,16 @@ namespace twozerofoureight
         private void btnDown_Click(object sender, EventArgs e)
         {
             controller.ActionPerformed(TwoZeroFourEightController.DOWN);
+        }
+
+        private void lbl33_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TwoZeroFourEightView_Load(object sender, EventArgs e)
+        {
+
         }
 
     }
