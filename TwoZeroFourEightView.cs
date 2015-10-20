@@ -14,6 +14,8 @@ namespace twozerofoureight
     {
         Model model;
         Controller controller;
+
+        ScoreForm SF = new ScoreForm();
        
         public TwoZeroFourEightView()
         {
@@ -29,6 +31,7 @@ namespace twozerofoureight
         {
             UpdateBoard(((TwoZeroFourEightModel) m).GetBoard());
             UpdateScore(((TwoZeroFourEightModel) m).GetBoard());
+            UpdateScore_Form(((TwoZeroFourEightModel)m).GetBoard());
         }
 
         private void UpdateTile(Label l, int i)
@@ -71,7 +74,8 @@ namespace twozerofoureight
                 case 512:
                     l.BackColor = Color.DarkSalmon;
                     break;
-                    l.BackColor = Color.Green;
+                default:
+                    l.BackColor = Color.AliceBlue;
                     break;
             }
         }
@@ -106,6 +110,19 @@ namespace twozerofoureight
             }
             lblScore.Text = Convert.ToString(bScore);
         }
+        private void UpdateScore_Form(int[,] board)
+        {
+            int bScore = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    bScore += board[i, j];
+                }
+            }
+            SF.lblScore2.Text = Convert.ToString(bScore);
+            SF.Visible = true;
+        }
 
         private void btnLeft_Click(object sender, EventArgs e)
         {
@@ -136,6 +153,5 @@ namespace twozerofoureight
         {
 
         }
-
     }
 }

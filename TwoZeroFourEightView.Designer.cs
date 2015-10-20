@@ -337,7 +337,7 @@
             this.Controls.Add(this.lbl00);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TwoZeroFourEightView";
-            this.Text = "Form1";
+            this.Text = "2048";
             this.Load += new System.EventHandler(this.TwoZeroFourEightView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
