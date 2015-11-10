@@ -14,14 +14,13 @@ namespace twozerofoureight
     {
         Model model;
         Controller controller;
-
         ScoreForm SF = new ScoreForm();
-       
         public TwoZeroFourEightView()
         {
             InitializeComponent();
             model = new TwoZeroFourEightModel();
             model.AttachObserver(this);
+            model.AttachObserver(SF);
             controller = new TwoZeroFourEightController();
             controller.AddModel(model);
             controller.ActionPerformed(TwoZeroFourEightController.LEFT);
@@ -30,8 +29,8 @@ namespace twozerofoureight
         public void Notify(Model m)
         {
             UpdateBoard(((TwoZeroFourEightModel) m).GetBoard());
-            UpdateScore(((TwoZeroFourEightModel) m).GetBoard());
-            UpdateScore_Form(((TwoZeroFourEightModel)m).GetBoard());
+            UpdateScore_Form(((TwoZeroFourEightModel)m).scoreUpdate());
+            SF.Show();
         }
 
         private void UpdateTile(Label l, int i)
@@ -98,30 +97,10 @@ namespace twozerofoureight
             UpdateTile(lbl32,board[3, 2]);
             UpdateTile(lbl33,board[3, 3]);
         }
-        private void UpdateScore(int[,] board)
+        private void UpdateScore_Form(int x)
         {
-            int bScore = 0;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int j = 0; j < 4; j++)
-                {
-                    bScore += board[i, j];
-                }
-            }
-            lblScore.Text = Convert.ToString(bScore);
-        }
-        private void UpdateScore_Form(int[,] board)
-        {
-            int bScore = 0;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int j = 0; j < 4; j++)
-                {
-                    bScore += board[i, j];
-                }
-            }
-            SF.lblScore2.Text = Convert.ToString(bScore);
-            SF.Visible = true;
+            
+            lblScore.Text = Convert.ToString(x);
         }
 
         private void btnLeft_Click(object sender, EventArgs e)
