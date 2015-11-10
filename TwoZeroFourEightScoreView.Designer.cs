@@ -50,7 +50,7 @@
             this.lblScore2.Font = new System.Drawing.Font("Modern No. 20", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblScore2.Location = new System.Drawing.Point(155, 49);
             this.lblScore2.Name = "lblScore2";
-            this.lblScore2.Size = new System.Drawing.Size(22, 25);
+            this.lblScore2.Size = new System.Drawing.Size(23, 25);
             this.lblScore2.TabIndex = 1;
             this.lblScore2.Text = "0";
             this.lblScore2.Click += new System.EventHandler(this.lblScore2_Click);
@@ -65,7 +65,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ScoreForm";
-            this.Text = "ScoreForm";
+            this.Text = "ScoreView";
+            this.Load += new System.EventHandler(this.ScoreForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

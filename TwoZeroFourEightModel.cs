@@ -36,7 +36,18 @@ namespace twozerofoureight
             board = Random(board);
             NotifyAll();
         }
-
+        public int scoreUpdate()
+        {
+            int bScore = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    bScore += board[i, j];
+                }
+            }
+            return bScore;
+        }
         private int[,] Random(int[,] input)
         {
             while (true)
